@@ -1,0 +1,16 @@
+{
+  "version": 2,
+  "dgSpecHash": "NRabJjuMs/FgpGyzBdmU+SBXWJUIZwM4gDBR7Ku1QdInqzNu1dd+SGg3iHJo1AynRA/Gz1Wy+8yhf9YifvkXaw==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\Duc\\Desktop\\duanVuevite\\qlsv\\projectQLSV\\Design\\Design.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Duc\\.nuget\\packages\\microsoft.aspnetcore.http.features\\5.0.17\\microsoft.aspnetcore.http.features.5.0.17.nupkg.sha512",
+    "C:\\Users\\Duc\\.nuget\\packages\\microsoft.extensions.primitives\\5.0.1\\microsoft.extensions.primitives.5.0.1.nupkg.sha512",
+    "C:\\Users\\Duc\\.nuget\\packages\\system.io.pipelines\\5.0.2\\system.io.pipelines.5.0.2.nupkg.sha512",
+    "C:\\Users\\Duc\\.nuget\\packages\\microsoft.windowsdesktop.app.ref\\6.0.23\\microsoft.windowsdesktop.app.ref.6.0.23.nupkg.sha512",
+    "C:\\Users\\Duc\\.nuget\\packages\\microsoft.netcore.app.ref\\6.0.23\\microsoft.netcore.app.ref.6.0.23.nupkg.sha512",
+    "C:\\Users\\Duc\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\6.0.23\\microsoft.aspnetcore.app.ref.6.0.23.nupkg.sha512",
+    "C:\\Users\\Duc\\.nuget\\packages\\microsoft.netcore.app.host.win-x64\\6.0.23\\microsoft.netcore.app.host.win-x64.6.0.23.nupkg.sha512"
+  ],
+  "logs": []
+}
