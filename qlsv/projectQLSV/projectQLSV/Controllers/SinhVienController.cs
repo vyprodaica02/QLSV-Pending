@@ -59,8 +59,34 @@ namespace projectQLSV.Controllers
             }
         }
 
+
+        [HttpPut("UpdateUser")]
+        public async Task<IActionResult> UpdateUser([FromForm] UserDTO userDTO, IFormFile file)
+        {
+            if (userDTO == null)
+            {
+                return BadRequest("lỗi");
+            }
+            var res = await repository.UpdateUser(userDTO, file);
+
+            if (res == ErrorHelper.ThanhCong)
+            {
+                return Ok("Thành công");
+            }
+            else if (res == ErrorHelper.EmailDaTontai)
+            {
+                return BadRequest("Email đã tồn tại");
+            }
+            else
+            {
+                return BadRequest("Lỗi");
+
+            }
+        }
+
+
         [HttpDelete("Delete/id")]
-        //[Authorize(Roles = "admin")]
+        [Authorize(Roles = "admin")]
         public async Task<IActionResult> Delete(int id)
         {
             if (id == null)

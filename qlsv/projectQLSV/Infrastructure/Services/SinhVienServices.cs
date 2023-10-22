@@ -5,6 +5,7 @@ using Infrastructure.DataEx;
 using Infrastructure.Enum;
 using MailKit.Net.Smtp;
 using MailKit.Security;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
 using MimeKit;
@@ -134,6 +135,55 @@ namespace Infrastructure.Services
             }
         }
 
+
+        public async Task<ErrorHelper> UpdateUser(UserDTO userDTO, IFormFile file)
+        {
+            using (var trans = dbContext.Database.BeginTransaction())
+            {
+                try
+                {
+                    var userHT = Entities.FirstOrDefault(x => x.Email == userDTO.Email);
+                    if (userHT == null)
+                    {
+                        return ErrorHelper.EmailKhongTontai;
+                    }
+                    else
+                    {
+                        userHT.Lop = null;
+                        if (file != null && file.Length > 0)
+                        {
+                            string imageUrl = await uploadfile.UploadFile(file);
+                            userDTO.avata = imageUrl;
+                            userHT.avata = userDTO.avata;
+                        }
+                        userHT.HoSinhVien = userDTO.HoSinhVien;
+                        userHT.TenSinhVien = userDTO.TenSinhVien;
+                        userHT.NgaySinh = userDTO.NgaySinh;
+                        userHT.NoiSinh = userDTO.NoiSinh;
+                        userHT.DiaChi = userDTO.DiaChi;
+                        userHT.DienThoai = userDTO.DienThoai;
+                        userHT.HocBong = userDTO.HocBong;
+                        userHT.GioiTinh = userDTO.GioiTinh;
+                        userHT.Email = userDTO.Email;
+                        userHT.Password = userDTO.Password;
+                        userHT.MaLop = userDTO.MaLop;
+                        userHT.roll = "user";
+                        dbContext.Update(userHT);
+                        dbContext.SaveChanges();
+                        trans.Commit();
+                        return ErrorHelper.ThanhCong;
+
+                    }
+                }
+                catch (Exception ex)
+                {
+                    trans.Rollback();
+                    throw;
+                }
+            }
+        }
+
+
         public T Attach(T entity)
         {
             return _services.Attach(entity).Entity;
@@ -146,7 +196,8 @@ namespace Infrastructure.Services
             await dbContext.SaveChangesAsync();
 
         }
-
+       
+        [Authorize(Roles = "admin")]
         public async Task DeleteAsync(int id)
         {
             var userHt = dbContext.sinhViens.FirstOrDefault(x => x.Id == id);

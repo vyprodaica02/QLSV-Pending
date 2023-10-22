@@ -17,8 +17,10 @@
     "pinia": "^2.1.6",
     "vue": "^3.3.4",
     "vue-router": "^4.2.5",
+    "vue3-datepicker": "^0.4.0",
     "vue3-pagination": "^1.0.16",
     "vue3-pagination-component": "^1.0.5",
+    "vuejs-datepicker": "^1.6.2",
     "vuejs-paginator": "^2.0.2"
   },
   "devDependencies": {
